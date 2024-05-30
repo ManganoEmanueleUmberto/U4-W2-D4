@@ -1,5 +1,6 @@
 package emanuele_mangano.Entities;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -38,12 +39,13 @@ public class Product {
 
     @Override
     public String toString() {
-        return "\nProduct{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", category='" + category + '\'' +
-                ", price=" + price +
-                '}';
+        final DecimalFormat decfor = new DecimalFormat("0.00");
+        return "\n" +
+                "id: " + id +
+                ", name: " + name +
+                ", category: " + category +
+                ", price: " + decfor.format(price) +
+                "€";
     }
 
     public String getCategory() {

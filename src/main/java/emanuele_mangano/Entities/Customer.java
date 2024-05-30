@@ -17,11 +17,10 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "\nCustomer{" +
-                "tier=" + tier +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "\n" +
+                "tier: " + tier +
+                ", id: " + id +
+                ", name: " + name;
     }
 
     public int getTier() {

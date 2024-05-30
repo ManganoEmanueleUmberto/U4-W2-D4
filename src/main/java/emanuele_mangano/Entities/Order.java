@@ -1,6 +1,6 @@
 package emanuele_mangano.Entities;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -8,13 +8,13 @@ public class Order {
 
     private long id;
     private String status;
-    private LocalDate orderDate;
-    private LocalDate deliveryDate;
+    private Date orderDate;
+    private Date deliveryDate;
     private List<Product> products;
     private Customer customer;
 
 
-    public Order(String status, List<Product> products, LocalDate orderDate, LocalDate deliveryDate, Customer customer) {
+    public Order(String status, List<Product> products, Date orderDate, Date deliveryDate, Customer customer) {
         Random rnd = new Random();
 
         this.id = rnd.nextInt(10000000, 90000000);
@@ -28,14 +28,13 @@ public class Order {
 
     @Override
     public String toString() {
-        return "\nOrder{" +
-                "id=" + id +
-                ", status='" + status + '\'' +
-                ", orderDate=" + orderDate +
-                ", deliveryDate=" + deliveryDate +
-                ", products=" + products +
-                ", customer=" + customer +
-                '}';
+        return "\n" +
+                "id: " + id +
+                ", status: " + status +
+                ", orderDate: " + orderDate +
+                ", deliveryDate: " + deliveryDate +
+                ", products:\n " + products +
+                ", customer: " + customer;
     }
 
     public Customer getCustomer() {
@@ -46,11 +45,11 @@ public class Order {
         return products;
     }
 
-    public LocalDate getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public LocalDate getDeliveryDate() {
+    public Date getDeliveryDate() {
         return deliveryDate;
     }
 }
