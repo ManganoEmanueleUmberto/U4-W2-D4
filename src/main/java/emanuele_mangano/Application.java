@@ -6,10 +6,7 @@ import emanuele_mangano.Entities.Order;
 import emanuele_mangano.Entities.Product;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -78,5 +75,11 @@ public class Application {
 
         System.out.println("\n***** Total Price ********");
         totalPriceOrderByCustomer.forEach((customer, price) -> System.out.println("\n" + customer + " have to pay: \n" + decfor.format(price) + "€"));
+
+        //EXERCISE 3
+
+        List<Product> productsSortedByPrice = productsList.stream().sorted(Comparator.comparingDouble(Product::getPrice)).toList().reversed();
+        System.out.println("\n***** Product Sorted By Price ********");
+        productsSortedByPrice.forEach(System.out::println);
     }
 }
