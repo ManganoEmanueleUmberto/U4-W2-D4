@@ -5,6 +5,7 @@ import emanuele_mangano.Entities.Customer;
 import emanuele_mangano.Entities.Order;
 import emanuele_mangano.Entities.Product;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ public class Application {
         List<Customer> customersList = new ArrayList<>();
         List<Product> productsList = new ArrayList<>();
         List<Order> ordersList = new ArrayList<>();
+        final DecimalFormat decfor = new DecimalFormat("0.00");
 
         Supplier<Customer> customerSupplier = () -> {
             Faker faker = new Faker();
@@ -65,10 +67,16 @@ public class Application {
         System.out.println(ordersList);
 
         //EXERCISE 1
+
         Map<String, List<Order>> orderByCustomer = ordersList.stream().collect(Collectors.groupingBy(order -> order.getCustomer().getName()));
         System.out.println("\n***** Orders By Customer ********");
         orderByCustomer.forEach((customer, products) -> System.out.println("\n" + customer + " has ordered: \n" + products));
 
-        
+        //EXERCISE 2
+
+        Map<String, Double> totalPriceOrderByCustomer = ordersList.stream().collect(Collectors.groupingBy(order -> order.getCustomer().getName(), Collectors.summingDouble(order -> order.getProducts().stream().mapToDouble(Product::getPrice).sum())));
+
+        System.out.println("\n***** Total Price ********");
+        totalPriceOrderByCustomer.forEach((customer, price) -> System.out.println("\n" + customer + " have to pay: \n" + decfor.format(price) + "€"));
     }
 }
