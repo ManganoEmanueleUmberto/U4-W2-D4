@@ -1,0 +1,11 @@
+[
+id: 14782505, name: Pasta Carbonara, category: Food, price: 8,33€, 
+id: 86813243, name: Pappardelle alla Bolognese, category: Food, price: 5,03€, 
+id: 41920946, name: Pasta Carbonara, category: Food, price: 6,61€, 
+id: 11619423, name: Arepas, category: Food, price: 7,99€, 
+id: 53379191, name: Fettuccine Alfredo, category: Food, price: 5,30€, 
+id: 13866466, name: Cheeseburger, category: Food, price: 8,71€, 
+id: 55465035, name: Lasagne, category: Food, price: 6,32€, 
+id: 78981514, name: Meatballs with Sauce, category: Food, price: 9,00€, 
+id: 53167120, name: Poutine, category: Food, price: 9,14€, 
+id: 47376873, name: California Maki, category: Food, price: 8,25€]

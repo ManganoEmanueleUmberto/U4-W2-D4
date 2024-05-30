@@ -4,7 +4,11 @@ import com.github.javafaker.Faker;
 import emanuele_mangano.Entities.Customer;
 import emanuele_mangano.Entities.Order;
 import emanuele_mangano.Entities.Product;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -96,5 +100,21 @@ public class Application {
 
         System.out.println("\n***** Total Amount By Category ********");
         totalAmountByCategory.forEach((category, total) -> System.out.println(category + ": " + decfor.format(total) + "€"));
+
+        //EXERCISE 6
+
+        SalvaProdottiSuDisco(productsList);
+
     }
+
+    public static void SalvaProdottiSuDisco(List<Product> productList) {
+        java.io.File file = new File("src/ProductsList.txt");
+
+        try {
+            FileUtils.writeStringToFile(file, productList + System.lineSeparator(), StandardCharsets.UTF_8, true);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
