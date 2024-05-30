@@ -30,7 +30,6 @@ public class Application {
         Supplier<Product> productSupplier = () -> {
             Faker faker = new Faker();
             Random rnd = new Random();
-
             return new Product(faker.food().dish(), "Food", rnd.nextDouble(5, 10));
         };
 
@@ -87,5 +86,15 @@ public class Application {
         Double averagePriceOrder = ordersList.stream().mapToDouble(order -> order.getProducts().stream().mapToDouble(Product::getPrice).sum()).average().getAsDouble();
         System.out.println("The average price for the orders is: " + decfor.format(averagePriceOrder));
 
+        //EXERCISE 5
+        List<Product> mixedList = new ArrayList<>();
+        mixedList.add(new Product("ewqee", "food", 23));
+        mixedList.add(new Product("ewqee", "device", 223));
+
+        Map<String, Double> totalAmountByCategory = mixedList.stream()
+                .collect(Collectors.groupingBy(Product::getCategory, Collectors.summingDouble(Product::getPrice)));
+
+        System.out.println("\n***** Total Amount By Category ********");
+        totalAmountByCategory.forEach((category, total) -> System.out.println(category + ": " + decfor.format(total) + "€"));
     }
 }
