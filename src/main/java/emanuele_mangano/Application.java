@@ -7,9 +7,11 @@ import emanuele_mangano.Entities.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class Application {
 
@@ -36,7 +38,7 @@ public class Application {
         Supplier<Order> orderSupplier = () -> {
             Faker faker = new Faker();
             Random rnd = new Random();
-            int statusIndex = rnd.nextInt(0, 3), productsIndex = rnd.nextInt(0, 9), customersIndex = rnd.nextInt(0, 2);
+            int statusIndex = rnd.nextInt(0, 3), productsIndex = rnd.nextInt(0, 9), customersIndex = rnd.nextInt(0, 4);
             String[] ArrayOfStatus = {"Delivered", "Pending", "Created", "Processing"};
 
 
@@ -62,6 +64,11 @@ public class Application {
         System.out.println("\n***** All the Orders ********");
         System.out.println(ordersList);
 
+        //EXERCISE 1
+        Map<String, List<Order>> orderByCustomer = ordersList.stream().collect(Collectors.groupingBy(order -> order.getCustomer().getName()));
+        System.out.println("\n***** Orders By Customer ********");
+        orderByCustomer.forEach((customer, products) -> System.out.println("\n" + customer + " has ordered: \n" + products));
 
+        
     }
 }
